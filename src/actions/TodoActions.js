@@ -14,10 +14,38 @@ var TodoActions = {
     },
 
     /**
+    * @param {string} id The TODO item
+    * @param {string} text
+    */
+    updateText: function(id, text) {
+        AppDispatcher.handleViewAction({
+            actionType: TodoConstants.TODO_UPDATE_TEXT,
+            id: id,
+            text: text
+        });
+    },
+
+    /**
+    * Toggle wheter a single TODO is complete
+    * @param {object} todo
+    */
+    toggleComplete: function(todo){
+        var id= todo.id;
+        var actionType = todo.complete ?
+            TodoConstants.TODO_UNDO_COMPLETE:
+            TodoConstants.TODO_COMPLETE;
+
+        AppDispatcher.handleViewAction({
+            actionType: actionType,
+            id: id
+        });
+    },
+
+    /**
     * Mark all TODOs as complete
     */
     toggleCompleteAll: function(){
-        AppDispatcher.dispatch({
+        AppDispatcher.handleViewAction({
             actionType: TodoConstants.TODO_TOGGLE_COMPLETE_ALL
         });
     },
@@ -31,6 +59,16 @@ var TodoActions = {
             id:id
         });
     },
+
+    /**
+    * Delete all the completed TODOS
+    */
+    destroyCompleted: function() {
+        AppDispatcher.handleViewAction({
+            actionType: TodoConstants.TODO_DESTROY_COMPLETED
+        });
+    }
+
 };
 
 module.exports = TodoActions;

@@ -1,4 +1,4 @@
-// var Footer = require('./Footer.react');
+var Footer = require('./Footer');
 var Header = require('./Header');
 var MainSection = require('./MainSection');
 var React = require('react');
@@ -35,7 +35,7 @@ var TodoApp = React.createClass({
                     allTodos={this.state.allTodos}
                     areAllComplete={this.state.areAllComplete}
                 />
-                
+                <Footer allTodos={this.state.allTodos} />
             </div>
         );
     },

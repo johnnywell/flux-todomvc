@@ -25,7 +25,7 @@ var TodoTextInput = React.createClass({
     render: function() /*object*/ {
         return (
             <input
-                classNmae={this.props.className}
+                className={this.props.className}
                 id={this.props.id}
                 placeholder={this.props.placeholder}
                 onBlur={this._save}
